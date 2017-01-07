@@ -5,8 +5,9 @@ module Bosh::Director::Models
     def validate
       validates_presence :instance_id
       validates_presence :task_id
-      validates_presence :address
-      validates_unique :address
+      validates_presence :address_str
+      validates_unique :address_str
+      raise "Invalid type for address_str column" unless address_str.is_a?(String)
     end
 
     def before_create
